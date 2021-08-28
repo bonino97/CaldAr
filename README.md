@@ -4,3 +4,4 @@
 
 1. ```cd ./server``` -> *Para ingresar a la carpeta.*
 2. ```npm install``` -> *Para instalar las dependencias de desarrollo y del proyecto*
+3. ```npm start``` -> *Para ejecutar el servidor*
