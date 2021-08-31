@@ -4,8 +4,14 @@
   "description": "API to Project CaldAr for MCGA.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon ./index"
   },
   "author": "Walter, Juan Cruz y Ruben.",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
 }
