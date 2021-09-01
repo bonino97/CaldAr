@@ -4,14 +4,27 @@
   "description": "API to Project CaldAr for MCGA.",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./index"
+    "start": "nodemon ./index",
+    "transpile": "babel src -d  output --watch",
+    "clean": "rimraf dist-server"
   },
   "author": "Walter, Juan Cruz y Ruben.",
   "license": "ISC",
   "dependencies": {
+    "@babel/cli": "^7.14.8",
+    "@babel/core": "^7.15.0",
+    "@babel/preset-env": "^7.15.0",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.12"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
   }
 }
