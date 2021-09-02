@@ -7,5 +7,5 @@
 3. ```npm start``` -> *Para ejecutar el servidor*
 
 ## Users
-1. ```getAllUsers``` -> *Usuarios - obtener todos los usuarios*
-2. ```getUserById``` -> *Usuarios - Obtener un Usuario por el ID*
+1. ```getAllUsers``` -> *Usuarios - Obtener todos los usuarios*
+2. ```getUserById``` -> *Usuarios - Obtener un usuario por el ID*
