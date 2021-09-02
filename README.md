@@ -8,3 +8,4 @@
 
 ## Users
 1. ```getAllUsers``` -> *Usuarios - obtener todos los usuarios*
+2. ```getUserById``` -> *Usuarios - Obtener un Usuario por el ID*
