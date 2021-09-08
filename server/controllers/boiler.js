@@ -1,5 +1,39 @@
 const fs = require('fs');
 
+// Create A New Boiler
+exports.addNewBoiler = async (req, res) => {
+  try {
+    
+    const { description, type } = req.body; //data from POSTMAN
+
+    let boilerJSON = fs.readFileSync('data/boilers.json', 'utf8'); //data from JSON file
+    let boilers = JSON.parse(boilerJSON);
+    if (!boilers) return res.status(400).json('Json inexistente.');  //error no JSON file
+    
+    if (description && type) {
+      const id = String(boilers.length + 1);
+      const newBoiler = {id, ...req.body};
+      console.log(newBoiler);
+      boilers.push(newBoiler);               //push into boilers array
+      
+      // let json = JSON.stringify(boilers);
+      // fs.writeFile('../data/boilers.json', json);
+
+      return res.status(200).json(boilers);  //show all boilers
+
+    }else {
+      res.status(500).send({error: 'there was an error fault'});
+    }
+
+  } catch (error) {
+
+    console.error(error);  //error
+
+  }
+};
+
+
+
 exports.getAllBoilers = async (req, res) => {
   try {
     let boilerJSON = fs.readFileSync('data/boilers.json', 'utf8');
