@@ -13,7 +13,7 @@ exports.getAllBoilers = async (req, res) => {
 
 exports.getBoilerById = async (req, res) => {
   try {
-    const boilerId = req.query.boilerId;
+    const boilerId = req.params.boilerId;
     let boilerJSON = fs.readFileSync('data/boilers.json', 'utf8');
     let boilers = JSON.parse(boilerJSON);
 
