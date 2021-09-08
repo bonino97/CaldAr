@@ -37,7 +37,7 @@ exports.getBoilerByType = async (req, res) => {
     let boilers = JSON.parse(boilerJSON);
 
     let boiler = boilers.filter(
-      (boiler) => Number(boiler.type) === Number(boilerType)
+      (boiler) => boiler.type === boilerType
     );
 
     if (boiler.length === 0)

@@ -1,401 +1,401 @@
 [{
     "id": 1,
     "description": "Zoolab",
-    "type": 1
+    "type": "A"
 }, {
     "id": 2,
     "description": "Keylex",
-    "type": 2
+    "type": "B"
 }, {
     "id": 3,
     "description": "Zoolab",
-    "type": 3
+    "type": "C"
 }, {
     "id": 4,
     "description": "Gembucket",
-    "type": 4
+    "type": "D"
 }, {
     "id": 5,
     "description": "Holdlamis",
-    "type": 3
+    "type": "C"
 }, {
     "id": 6,
     "description": "Tampflex",
-    "type": 1
+    "type": "A"
 }, {
     "id": 7,
     "description": "Bitwolf",
-    "type": 1
+    "type": "A"
 }, {
     "id": 8,
     "description": "Tresom",
-    "type": 4
+    "type": "D"
 }, {
     "id": 9,
     "description": "Opela",
-    "type": 2
+    "type": "B"
 }, {
     "id": 10,
     "description": "Stringtough",
-    "type": 3
+    "type": "C"
 }, {
     "id": 11,
     "description": "Konklab",
-    "type": 1
+    "type": "A"
 }, {
     "id": 12,
     "description": "Sonair",
-    "type": 2
+    "type": "B"
 }, {
     "id": 13,
     "description": "Treeflex",
-    "type": 1
+    "type": "A"
 }, {
     "id": 14,
     "description": "Quo Lux",
-    "type": 4
+    "type": "D"
 }, {
     "id": 15,
     "description": "Cookley",
-    "type": 1
+    "type": "A"
 }, {
     "id": 16,
     "description": "Zontrax",
-    "type": 2
+    "type": "B"
 }, {
     "id": 17,
     "description": "Bitchip",
-    "type": 3
+    "type": "C"
 }, {
     "id": 18,
     "description": "Namfix",
-    "type": 1
+    "type": "A"
 }, {
     "id": 19,
     "description": "Latlux",
-    "type": 4
+    "type": "D"
 }, {
     "id": 20,
     "description": "Quo Lux",
-    "type": 20
+    "type": "C"
 }, {
     "id": 21,
     "description": "Rank",
-    "type": 21
+    "type": "B"
 }, {
     "id": 22,
     "description": "Quo Lux",
-    "type": 22
+    "type": "B"
 }, {
     "id": 23,
     "description": "Fix San",
-    "type": 23
+    "type": "D"
 }, {
     "id": 24,
     "description": "Zaam-Dox",
-    "type": 24
+    "type": "B"
 }, {
     "id": 25,
     "description": "Biodex",
-    "type": 25
+    "type": "D"
 }, {
     "id": 26,
     "description": "Greenlam",
-    "type": 26
+    "type": "A"
 }, {
     "id": 27,
     "description": "Tampflex",
-    "type": 27
+    "type": "A"
 }, {
     "id": 28,
     "description": "Fix San",
-    "type": 28
+    "type": "A"
 }, {
     "id": 29,
     "description": "Y-Solowarm",
-    "type": 29
+    "type": "B"
 }, {
     "id": 30,
     "description": "Hatity",
-    "type": 30
+    "type": "A"
 }, {
     "id": 31,
     "description": "Transcof",
-    "type": 31
+    "type": "D"
 }, {
     "id": 32,
     "description": "Redhold",
-    "type": 32
+    "type": "B"
 }, {
     "id": 33,
     "description": "Andalax",
-    "type": 33
+    "type": "B"
 }, {
     "id": 34,
     "description": "Trippledex",
-    "type": 34
+    "type": "D"
 }, {
     "id": 35,
     "description": "Y-find",
-    "type": 35
+    "type": "C"
 }, {
     "id": 36,
     "description": "Pannier",
-    "type": 36
+    "type": "A"
 }, {
     "id": 37,
     "description": "Fixflex",
-    "type": 37
+    "type": "A"
 }, {
     "id": 38,
     "description": "Aerified",
-    "type": 38
+    "type": "D"
 }, {
     "id": 39,
     "description": "Transcof",
-    "type": 39
+    "type": "D"
 }, {
     "id": 40,
     "description": "Lotstring",
-    "type": 40
+    "type": "C"
 }, {
     "id": 41,
     "description": "Lotstring",
-    "type": 41
+    "type": "B"
 }, {
     "id": 42,
     "description": "Fixflex",
-    "type": 42
+    "type": "C"
 }, {
     "id": 43,
     "description": "Latlux",
-    "type": 43
+    "type": "C"
 }, {
     "id": 44,
     "description": "Bitwolf",
-    "type": 44
+    "type": "D"
 }, {
     "id": 45,
     "description": "Mat Lam Tam",
-    "type": 45
+    "type": "A"
 }, {
     "id": 46,
     "description": "It",
-    "type": 46
+    "type": "A"
 }, {
     "id": 47,
     "description": "Sonsing",
-    "type": 47
+    "type": "B"
 }, {
     "id": 48,
     "description": "Redhold",
-    "type": 48
+    "type": "A"
 }, {
     "id": 49,
     "description": "Aerified",
-    "type": 49
+    "type": "D"
 }, {
     "id": 50,
     "description": "Treeflex",
-    "type": 50
+    "type": "A"
 }, {
     "id": 51,
     "description": "Sub-Ex",
-    "type": 51
+    "type": "A"
 }, {
     "id": 52,
     "description": "Domainer",
-    "type": 52
+    "type": "C"
 }, {
     "id": 53,
     "description": "Toughjoyfax",
-    "type": 53
+    "type": "A"
 }, {
     "id": 54,
     "description": "Duobam",
-    "type": 54
+    "type": "D"
 }, {
     "id": 55,
     "description": "Biodex",
-    "type": 55
+    "type": "B"
 }, {
     "id": 56,
     "description": "Fintone",
-    "type": 56
+    "type": "D"
 }, {
     "id": 57,
     "description": "Subin",
-    "type": 57
+    "type": "A"
 }, {
     "id": 58,
     "description": "Tin",
-    "type": 58
+    "type": "A"
 }, {
     "id": 59,
     "description": "Andalax",
-    "type": 59
+    "type": "A"
 }, {
     "id": 60,
     "description": "Fixflex",
-    "type": 60
+    "type": "B"
 }, {
     "id": 61,
     "description": "Fintone",
-    "type": 61
+    "type": "D"
 }, {
     "id": 62,
     "description": "Cardify",
-    "type": 62
+    "type": "A"
 }, {
     "id": 63,
     "description": "Y-find",
-    "type": 63
+    "type": "D"
 }, {
     "id": 64,
     "description": "Fixflex",
-    "type": 64
+    "type": "B"
 }, {
     "id": 65,
     "description": "Gembucket",
-    "type": 65
+    "type": "C"
 }, {
     "id": 66,
     "description": "Temp",
-    "type": 66
+    "type": "B"
 }, {
     "id": 67,
     "description": "Tresom",
-    "type": 67
+    "type": "B"
 }, {
     "id": 68,
     "description": "Gembucket",
-    "type": 68
+    "type": "D"
 }, {
     "id": 69,
     "description": "Pannier",
-    "type": 69
+    "type": "C"
 }, {
     "id": 70,
     "description": "Zamit",
-    "type": 70
+    "type": "B"
 }, {
     "id": 71,
     "description": "Zaam-Dox",
-    "type": 71
+    "type": "A"
 }, {
     "id": 72,
     "description": "Quo Lux",
-    "type": 72
+    "type": "A"
 }, {
     "id": 73,
     "description": "Viva",
-    "type": 73
+    "type": "A"
 }, {
     "id": 74,
     "description": "It",
-    "type": 74
+    "type": "B"
 }, {
     "id": 75,
     "description": "Flowdesk",
-    "type": 75
+    "type": "A"
 }, {
     "id": 76,
     "description": "Duobam",
-    "type": 76
+    "type": "D"
 }, {
     "id": 77,
     "description": "Sub-Ex",
-    "type": 77
+    "type": "D"
 }, {
     "id": 78,
     "description": "Konklab",
-    "type": 78
+    "type": "A"
 }, {
     "id": 79,
     "description": "Redhold",
-    "type": 79
+    "type": "C"
 }, {
     "id": 80,
     "description": "Ventosanzap",
-    "type": 80
+    "type": "A"
 }, {
     "id": 81,
     "description": "Quo Lux",
-    "type": 81
+    "type": "A"
 }, {
     "id": 82,
     "description": "Voltsillam",
-    "type": 82
+    "type": "D"
 }, {
     "id": 83,
     "description": "Subin",
-    "type": 83
+    "type": "A"
 }, {
     "id": 84,
     "description": "Latlux",
-    "type": 84
+    "type": "B"
 }, {
     "id": 85,
     "description": "Vagram",
-    "type": 85
+    "type": "C"
 }, {
     "id": 86,
     "description": "Tampflex",
-    "type": 86
+    "type": "C"
 }, {
     "id": 87,
     "description": "Job",
-    "type": 87
+    "type": "D"
 }, {
     "id": 88,
     "description": "Zontrax",
-    "type": 88
+    "type": "C"
 }, {
     "id": 89,
     "description": "Viva",
-    "type": 89
+    "type": "B"
 }, {
     "id": 90,
     "description": "Matsoft",
-    "type": 90
+    "type": "A"
 }, {
     "id": 91,
     "description": "Viva",
-    "type": 91
+    "type": "A"
 }, {
     "id": 92,
     "description": "Sonsing",
-    "type": 92
+    "type": "A"
 }, {
     "id": 93,
     "description": "Kanlam",
-    "type": 93
+    "type": "C"
 }, {
     "id": 94,
     "description": "Otcom",
-    "type": 94
+    "type": "A"
 }, {
     "id": 95,
     "description": "Overhold",
-    "type": 95
+    "type": "A"
 }, {
     "id": 96,
     "description": "Konklux",
-    "type": 96
+    "type": "D"
 }, {
     "id": 97,
     "description": "Bamity",
-    "type": 97
+    "type": "A"
 }, {
     "id": 98,
     "description": "Quo Lux",
-    "type": 98
+    "type": "D"
 }, {
     "id": 99,
     "description": "Toughjoyfax",
-    "type": 99
+    "type": "A"
 }, {
     "id": 100,
     "description": "Zontrax",
-    "type": 100
+    "type": "B"
 }]
