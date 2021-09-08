@@ -17,63 +17,63 @@
 }, {
     "id": 5,
     "description": "Holdlamis",
-    "type": 5
+    "type": 3
 }, {
     "id": 6,
     "description": "Tampflex",
-    "type": 6
+    "type": 1
 }, {
     "id": 7,
     "description": "Bitwolf",
-    "type": 7
+    "type": 1
 }, {
     "id": 8,
     "description": "Tresom",
-    "type": 8
+    "type": 4
 }, {
     "id": 9,
     "description": "Opela",
-    "type": 9
+    "type": 2
 }, {
     "id": 10,
     "description": "Stringtough",
-    "type": 10
+    "type": 3
 }, {
     "id": 11,
     "description": "Konklab",
-    "type": 11
+    "type": 1
 }, {
     "id": 12,
     "description": "Sonair",
-    "type": 12
+    "type": 2
 }, {
     "id": 13,
     "description": "Treeflex",
-    "type": 13
+    "type": 1
 }, {
     "id": 14,
     "description": "Quo Lux",
-    "type": 14
+    "type": 4
 }, {
     "id": 15,
     "description": "Cookley",
-    "type": 15
+    "type": 1
 }, {
     "id": 16,
     "description": "Zontrax",
-    "type": 16
+    "type": 2
 }, {
     "id": 17,
     "description": "Bitchip",
-    "type": 17
+    "type": 3
 }, {
     "id": 18,
     "description": "Namfix",
-    "type": 18
+    "type": 1
 }, {
     "id": 19,
     "description": "Latlux",
-    "type": 19
+    "type": 4
 }, {
     "id": 20,
     "description": "Quo Lux",
