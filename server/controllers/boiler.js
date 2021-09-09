@@ -10,25 +10,24 @@ exports.addNewBoiler = async (req, res) => {
     let boilers = JSON.parse(boilerJSON);
     if (!boilers) return res.status(400).json('Json inexistente.');  //error no JSON file
     
-    if (description && type) {
-      const id = String(boilers.length + 1);
-      const newBoiler = {id, ...req.body};
-      console.log(newBoiler);
-      boilers.push(newBoiler);               //push into boilers array
-      
-      let json = JSON.stringify(boilers);
-
-      fs.writeFile('data/boilers.json', json, 'utf8', function(err) {
-        if (err) throw err;
-        console.log('complete');
-        }
-      );
-
-      return res.status(200).json(boilers);  //show all boilers
-
-    }else {
-      res.status(500).send({error: 'there was an error fault'});
+    if (!description) {
+      return res.status(400).send({ error: 'No ingreso descripcion de la caldera.' });
     }
+
+    if (!type) {
+      return res.status(400).send({ error: 'No especifico el tipo de caldera.' });
+    }
+
+    const boilerId = Number(boilers[boilers.length - 1].id) + 1;
+    const newBoiler = { id: boilerId, description, type };
+    boilers.push(newBoiler);
+
+    fs.writeFileSync('data/boilers.json', JSON.stringify(boilers), {
+      encoding: 'utf8',
+      flag: 'w',
+    });
+
+    return res.status(200).json(boilers);
 
   } catch (error) {
 
