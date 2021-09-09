@@ -54,7 +54,6 @@ exports.getUserByDepartment = async (req, res) => {
 exports.deleteUser = async (req, res) => {
   try {
     const userId = req.params.userId;
-    console.log(userId);
     let usersJSON = fs.readFileSync('data/users.json', 'utf8');
     let users = JSON.parse(usersJSON);
 
@@ -75,5 +74,84 @@ exports.deleteUser = async (req, res) => {
   } catch (error) {
     console.error(error);
     return res.status(500).json('Error Interno del Servidor.');
+  }
+};
+
+//
+exports.addNewUser = async (req, res) => {
+  try {
+    const { first_name, last_name, email, department } = req.body;
+    console.log(req.body);
+    let usersJSON = fs.readFileSync('data/users.json', 'utf8');
+    let users = JSON.parse(usersJSON);
+
+    if (!first_name) {
+      return res.status(400).send({ error: 'No existe el nombre.' });
+    }
+
+    if (!last_name) {
+      return res.status(400).send({ error: 'No existe el apellido.' });
+    }
+    if (!email) {
+      return res.status(400).send({ error: 'No existe el email.' });
+    }
+
+    if (!department) {
+      return res.status(400).send({ error: 'No existe el departamento.' });
+    }
+
+    const userId = Number(users[users.length - 1].id) + 1;
+    const newUser = { id: userId, first_name, last_name, email, department };
+    users.push(newUser);
+
+    fs.writeFileSync('data/users.json', JSON.stringify(users), {
+      encoding: 'utf8',
+      flag: 'w',
+    });
+
+    return res.status(200).json(users);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json('Internal server error.');
+  }
+};
+
+//
+exports.updateUser = async (req, res) => {
+  try {
+    const { firstname } = req.body;
+
+    let usersJSON = fs.readFileSync('data/users.json', 'utf8');
+    let users = JSON.parse(usersJSON);
+    console.log(firstname);
+
+    if (!firstname) {
+      return res.status(400).send({ error: 'No existe el nombre.' });
+    }
+
+    if (!last_name) {
+      return res.status(400).send({ error: 'No existe el apellido.' });
+    }
+    if (!mail) {
+      return res.status(400).send({ error: 'No existe el email.' });
+    }
+
+    if (!department) {
+      return res.status(400).send({ error: 'No existe el departamento.' });
+    }
+
+    const userId = Number(users[users.length - 1].id) + 1;
+    const newUser = { id: userId, first_name, last_name, email, department };
+    users.push(newUser);
+
+    fs.writeFileSync('data/users.json', JSON.stringify(users), {
+      encoding: 'utf8',
+      flag: 'w',
+    });
+
+    return res.status(200).json(users);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json('Internal server error.');
   }
 };

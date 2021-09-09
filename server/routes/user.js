@@ -6,5 +6,7 @@ module.exports = () => {
   router.get('/department/:department', userController.getUserByDepartment);
   router.get('/:userId', userController.getUserById);
   router.delete('/:userId', userController.deleteUser);
+  router.post('/', userController.addNewUser);
+  router.put('/', userController.updateUser);
   return router;
 };

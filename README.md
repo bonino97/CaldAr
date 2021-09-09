@@ -12,3 +12,4 @@
 2. `getUserById` -> _Usuarios - Obtener un usuario por el Id_
 3. `deleteUser` -> _Usuarios - Borrar usuario por el Id_
 4. `getUserByDepartment` -> _Usuarios - Obtener usuarios por Departamento_
+5. `addNewUser` -> _Usuarios - Agregar usuario_
