@@ -5,3 +5,7 @@
 1. ```cd ./server``` -> *Para ingresar a la carpeta.*
 2. ```npm install``` -> *Para instalar las dependencias de desarrollo y del proyecto*
 3. ```npm start``` -> *Para ejecutar el servidor*
+
+## Users
+1. ```getAllUsers``` -> *Usuarios - Obtener todos los usuarios*
+2. ```getUserById``` -> *Usuarios - Obtener un usuario por el ID*
