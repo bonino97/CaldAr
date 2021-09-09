@@ -93,22 +93,53 @@ exports.getBoilerByType = async (req, res) => {
   }
 };
 
-/*
+
 // UPDATE Or MODIFY A Boiler By ID
-exports.modifyBoilerById = async (req, res) => {
+exports.updateBoiler = async (req, res) => {
   try {
-    const boilerId = req.params.boilerId;
+    
+    const { id, description, type } = req.body;
+    
     let boilerJSON = fs.readFileSync('data/boilers.json', 'utf8');
+
     let boilers = JSON.parse(boilerJSON);
+    if (!boilers) return res.status(400).json('Json Inexistente.');
+    console.log(boilers);
+    console.log('boilerId: ' + id + ' /description: ' + description + ' /type: ' + type);
 
-    let boiler = boilers.filter(
-      (boiler) => Number(boiler.id) === Number(boilerId)
+    let boilerIndex = boilers.findIndex(
+      (boiler) => Number(boiler.id) === Number(id)
     );
+    console.log(boilerIndex);
+    
+    if (boilerIndex === -1) {
+      return res
+        .status(400)
+        .send({ error: `No existe la caldera con id: ${boilerId} .` });
+    }
+    
+    if (!description) {
+      return res.status(400).send({ error: 'No ingreso descripcion de la caldera.' });
+    }
 
-    if (boiler.length === 0)
-      return res.status(400).json('No se encontro una caldera con ese Id.');
+    if (!type) {
+      return res.status(400).send({ error: 'No especifico el tipo de caldera.' });
+    }
 
-    return res.status(200).json(boiler);
+    const updatedBoiler = {
+      id: Number(id),
+      description,
+      type,
+    };
+
+    boilers[boilerIndex] = updatedBoiler;
+
+    fs.writeFileSync('data/boilers.json', JSON.stringify(boilers), {
+      encoding: 'utf8',
+      flag: 'w',
+    });
+
+    return res.status(200).json(boilers);
 
   } catch (error) {
     console.error(error);
@@ -116,24 +147,6 @@ exports.modifyBoilerById = async (req, res) => {
   }
 };
 
-router.put('/:id', (req,res) => {
-  const { id } = req.params;
-  const { title, director, year, rating } = req.body;
-  if (title && director && year && rating) {
-      _.each(movies, (movie, i) => {
-          if (movie.id == id) {
-              movie.title = title;
-              movie.director = director;
-              movie.year = year;
-              movie.rating = rating;
-          }
-      });
-      res.json(movies);
-  }else {
-      res.status(500).send({error: 'there was an error'});
-  }
-});
-*/
 
 // DELETE A Boiler By ID
 exports.deleteBoiler = async (req, res) => {

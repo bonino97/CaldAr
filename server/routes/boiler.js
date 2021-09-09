@@ -9,7 +9,7 @@ module.exports = () => {
   router.get('/type/:boilerType', boilerController.getBoilerByType);
   router.get('/:boilerId', boilerController.getBoilerById);
 
-  // router.put('/:id', boilerController.modifyBoilerById);
+  router.put('/', boilerController.updateBoiler);
 
   router.delete('/:id', boilerController.deleteBoiler);
   return router;
