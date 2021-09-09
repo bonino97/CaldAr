@@ -9,6 +9,8 @@ module.exports = () => {
   router.get('/all', boilerController.getAllBoilers);
   router.get('/type/:boilerType', boilerController.getBoilerByType);
 
+  router.put('/:id', boilerController.modifyBoilerById);
+
   router.delete('/:id', boilerController.deleteBoiler);
   return router;
 };
