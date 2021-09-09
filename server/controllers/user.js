@@ -33,6 +33,19 @@ exports.getUserById = async (req, res) => {
 
 exports.getUserByDepartment = async (req, res) => {
   try {
+    const department = req.params.department;
+    console.log('Valor', department);
+    let userJSON = fs.readFileSync('data/users.json', 'utf8');
+    let users = JSON.parse(userJSON);
+
+    let usersDepartment = users.filter(
+      (user) => String(user.department) === String(department)
+    );
+
+    if (usersDepartment.length === 0)
+      return res.status(400).json('No se encontro el Departamento.');
+
+    return res.status(200).json(usersDepartment);
   } catch (error) {
     console.error(error);
   }
