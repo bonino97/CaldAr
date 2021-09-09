@@ -11,6 +11,6 @@ module.exports = () => {
 
   router.put('/', boilerController.updateBoiler);
 
-  router.delete('/:id', boilerController.deleteBoiler);
+  router.delete('/:boilerId', boilerController.deleteBoiler);
   return router;
 };
