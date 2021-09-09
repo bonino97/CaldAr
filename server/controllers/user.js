@@ -1,4 +1,7 @@
 const fs = require('fs');
+const _ = require('underscore');
+
+
 
 exports.getAllUsers = async (req, res) => {
   try {
@@ -44,6 +47,20 @@ exports.getUserByDepartment = async (req, res) => {
 
 exports.deleteUser = async (req, res) => {
   try {
+     const userId = req.params;
+    console.log(userId);
+    let usersJSON = fs.readFileSync('data/users.json', 'utf8');
+    let users = JSON.parse(usersJSON);
+    if (userId) {
+      _.each(users, (user, i) => {
+        if (users.id == userId) {
+          console.log(user.i);
+          users.splice(i, 1);
+        }
+      });
+      return res.status(200).json(users);
+    }
+
   } catch (error) {
     console.error(error);
   }
