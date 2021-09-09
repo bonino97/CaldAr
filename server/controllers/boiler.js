@@ -16,8 +16,13 @@ exports.addNewBoiler = async (req, res) => {
       console.log(newBoiler);
       boilers.push(newBoiler);               //push into boilers array
       
-      // let json = JSON.stringify(boilers);
-      // fs.writeFile('../data/boilers.json', json);
+      let json = JSON.stringify(boilers);
+
+      fs.writeFile('data/boilers.json', json, 'utf8', function(err) {
+        if (err) throw err;
+        console.log('complete');
+        }
+      );
 
       return res.status(200).json(boilers);  //show all boilers
 
