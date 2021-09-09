@@ -119,20 +119,26 @@ exports.addNewUser = async (req, res) => {
 //
 exports.updateUser = async (req, res) => {
   try {
-    const { firstname } = req.body;
-
+    const { userId, first_name, last_name, email, department } = req.body;
+    console.log(userId);
     let usersJSON = fs.readFileSync('data/users.json', 'utf8');
     let users = JSON.parse(usersJSON);
-    console.log(firstname);
+    let userIndex = users.findIndex(
+      (user) => Number(user.id) === Number(userId)
+    );
 
-    if (!firstname) {
+    if (userIndex === -1) {
+      return res.status(400).send({ error: `No existe el Id: ${userId}.` });
+    }
+
+    if (!first_name) {
       return res.status(400).send({ error: 'No existe el nombre.' });
     }
 
     if (!last_name) {
       return res.status(400).send({ error: 'No existe el apellido.' });
     }
-    if (!mail) {
+    if (!email) {
       return res.status(400).send({ error: 'No existe el email.' });
     }
 
@@ -140,9 +146,15 @@ exports.updateUser = async (req, res) => {
       return res.status(400).send({ error: 'No existe el departamento.' });
     }
 
-    const userId = Number(users[users.length - 1].id) + 1;
-    const newUser = { id: userId, first_name, last_name, email, department };
-    users.push(newUser);
+    const updateUser = {
+      id: Number(userId),
+      first_name,
+      last_name,
+      email,
+      department,
+    };
+
+    users[userIndex] = updateUser;
 
     fs.writeFileSync('data/users.json', JSON.stringify(users), {
       encoding: 'utf8',
