@@ -14,7 +14,7 @@ exports.getAllBuildings = async (req, res) => {
 
 exports.getBuildingById = async (req, res) => {
   try {
-    const buildingId = req.query.buildingId;
+    const buildingId = req.params.buildingId;
     let buildingJSON = fs.readFileSync('data/buildings.json', 'utf8');
     let buildings = JSON.parse(buildingJSON);
 
@@ -34,7 +34,7 @@ exports.getBuildingById = async (req, res) => {
 
 exports.getBuildingByCategory = async (req, res) => {
   try {
-    const category = req.query.category;
+    const category = req.params.category;
     let buildingJSON = fs.readFileSync('data/buildings.json', 'utf8');
     let buildings = JSON.parse(buildingJSON);
     let buildingsCategory = buildings.filter(
