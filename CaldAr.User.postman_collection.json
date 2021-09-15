@@ -1,0 +1,239 @@
+{
+	"id": "db1f8b65-f6ca-beb0-002e-fff9fb5e2061",
+	"name": "CaldAr",
+	"description": "",
+	"order": [],
+	"folders": [
+		{
+			"id": "83cc67ed-957b-79f2-dc33-999472828096",
+			"name": "User",
+			"description": "",
+			"order": [
+				"3b56e1b9-ae07-e658-bd86-a2f22fa4eece",
+				"94a889ac-1f48-bb2f-1ae1-8248e36303f6",
+				"8855763d-1273-ab5f-8ed7-e5a8aa54dadc",
+				"17fc0c4f-ed7e-81da-f4b3-c0ab79be580f",
+				"2868e933-79fc-a618-9c86-57739c8a81f1",
+				"5778dba1-3d9b-0ab5-d19d-f54358acd8fa"
+			],
+			"folders_order": [],
+			"owner": "17287619",
+			"collectionId": "db1f8b65-f6ca-beb0-002e-fff9fb5e2061"
+		}
+	],
+	"folders_order": [
+		"83cc67ed-957b-79f2-dc33-999472828096"
+	],
+	"timestamp": 0,
+	"owner": "17287619",
+	"public": false,
+	"requests": [
+		{
+			"id": "17fc0c4f-ed7e-81da-f4b3-c0ab79be580f",
+			"name": "deleteUser",
+			"description": "",
+			"collectionId": "db1f8b65-f6ca-beb0-002e-fff9fb5e2061",
+			"method": "DELETE",
+			"headers": "",
+			"data": [],
+			"rawModeData": "",
+			"url": "http://localhost:3000/api/user/123",
+			"responses": [],
+			"pathVariableData": [],
+			"queryParams": [],
+			"headerData": [],
+			"collection_id": "db1f8b65-f6ca-beb0-002e-fff9fb5e2061",
+			"folder": "83cc67ed-957b-79f2-dc33-999472828096",
+			"preRequestScript": "",
+			"tests": ""
+		},
+		{
+			"id": "2868e933-79fc-a618-9c86-57739c8a81f1",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3000/api/user",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "db1f8b65-f6ca-beb0-002e-fff9fb5e2061",
+			"data": [
+				{
+					"key": "first_name",
+					"value": "walter",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "last_name",
+					"value": "alfonso",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "email",
+					"value": "walfonso@hotmail.com",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "department",
+					"value": "Business Development",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "http://localhost:3000/api/user",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1631174089411,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "83cc67ed-957b-79f2-dc33-999472828096"
+		},
+		{
+			"id": "3b56e1b9-ae07-e658-bd86-a2f22fa4eece",
+			"name": "getUserById",
+			"description": "",
+			"collectionId": "db1f8b65-f6ca-beb0-002e-fff9fb5e2061",
+			"method": "GET",
+			"headers": "",
+			"data": [],
+			"rawModeData": "",
+			"url": "http://localhost:3000/api/user/",
+			"responses": [],
+			"pathVariableData": [],
+			"queryParams": [],
+			"headerData": [],
+			"collection_id": "db1f8b65-f6ca-beb0-002e-fff9fb5e2061",
+			"folder": "83cc67ed-957b-79f2-dc33-999472828096",
+			"preRequestScript": "",
+			"tests": ""
+		},
+		{
+			"id": "5778dba1-3d9b-0ab5-d19d-f54358acd8fa",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3000/api/user/",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "PUT",
+			"data": [
+				{
+					"key": "userId",
+					"value": "2",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "first_name",
+					"value": "Juan Martin",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "last_name",
+					"value": "alfonso",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "email",
+					"value": "walfonso@hotmail.com",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "department",
+					"value": "Business Development",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1631172842041,
+			"name": "http://localhost:3000/api/user/",
+			"description": "",
+			"collectionId": "db1f8b65-f6ca-beb0-002e-fff9fb5e2061",
+			"responses": [],
+			"collection_id": "db1f8b65-f6ca-beb0-002e-fff9fb5e2061",
+			"folder": "83cc67ed-957b-79f2-dc33-999472828096"
+		},
+		{
+			"id": "8855763d-1273-ab5f-8ed7-e5a8aa54dadc",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:3000/api/user/department",
+			"folder": "83cc67ed-957b-79f2-dc33-999472828096",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1631163324975,
+			"name": "getUserByDepartment",
+			"description": "",
+			"collectionId": "db1f8b65-f6ca-beb0-002e-fff9fb5e2061",
+			"responses": [],
+			"collection_id": "db1f8b65-f6ca-beb0-002e-fff9fb5e2061"
+		},
+		{
+			"id": "94a889ac-1f48-bb2f-1ae1-8248e36303f6",
+			"name": "getAllUsers",
+			"description": "",
+			"collectionId": "db1f8b65-f6ca-beb0-002e-fff9fb5e2061",
+			"method": "GET",
+			"headers": "",
+			"data": [],
+			"rawModeData": "",
+			"url": "http://localhost:3000/api/user/all",
+			"responses": [],
+			"pathVariableData": [],
+			"queryParams": [],
+			"headerData": [],
+			"collection_id": "db1f8b65-f6ca-beb0-002e-fff9fb5e2061",
+			"folder": "83cc67ed-957b-79f2-dc33-999472828096",
+			"preRequestScript": "",
+			"tests": ""
+		}
+	]
+}

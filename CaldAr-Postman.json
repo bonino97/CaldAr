@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "b3b67493-a2f7-48ae-9dcf-9916f3e9c9e3",
+		"_postman_id": "53165d90-4f90-46b2-a7b5-ff5f80fbcf0f",
 		"name": "CaldAr",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -14,7 +14,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/api/boiler/",
+							"raw": "http://localhost:3000/api/boiler/2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -23,7 +23,7 @@
 							"path": [
 								"api",
 								"boiler",
-								""
+								"2"
 							]
 						}
 					},
@@ -51,12 +51,12 @@
 					"response": []
 				},
 				{
-					"name": "getBoilerByCategory",
+					"name": "getBoilerByType",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/api/boiler/category",
+							"raw": "http://localhost:3000/api/boiler/type/A",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -65,7 +65,70 @@
 							"path": [
 								"api",
 								"boiler",
-								"category"
+								"type",
+								"A"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addNewBoiler",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\": \"Caldera B\",\r\n    \"type\": \"B\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/boiler/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"boiler",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateBoiler",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 2,\r\n    \"description\": \"Caldera B\",\r\n    \"type\": \"B\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/boiler/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"boiler",
+								""
 							]
 						}
 					},
@@ -75,9 +138,19 @@
 					"name": "deleteBoiler",
 					"request": {
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 2,\r\n    \"description\": \"Caldera B\",\r\n    \"type\": \"B\"\r\n}"
+						},
 						"url": {
-							"raw": "http://localhost:3000/api/boiler/12345",
+							"raw": "http://localhost:3000/api/boiler/2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -86,7 +159,7 @@
 							"path": [
 								"api",
 								"boiler",
-								"12345"
+								"2"
 							]
 						}
 					},
