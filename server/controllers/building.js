@@ -1,4 +1,3 @@
-const fs = require('fs');
 const Building = require('../models/building');
 
 exports.addNewBuilding = async (req, res) => {
