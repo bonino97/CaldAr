@@ -4,6 +4,9 @@ const bodyParser = require('body-parser');
 
 require('dotenv').config({ path: '.env' });
 
+/* MONGOOSE */
+require('./config/db');
+
 /* EXPRESS */
 const app = express();
 app.use(express.urlencoded({ extended: false }));

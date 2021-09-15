@@ -3,10 +3,14 @@ const router = express.Router();
 const buildingController = require('../controllers/building');
 
 module.exports = () => {
-  router.get('/', buildingController.getBuildingById);
   router.get('/all', buildingController.getAllBuildings);
-  router.get('/category', buildingController.getBuildingByCategory);
+  router.get('/category/:category', buildingController.getBuildingByCategory);
+  router.get('/:buildingId', buildingController.getBuildingById);
 
-  router.delete('/:id', buildingController.deleteBuilding);
+  router.post('/', buildingController.addNewBuilding);
+
+  router.put('/', buildingController.updateBuilding);
+
+  router.delete('/:buildingId', buildingController.deleteBuilding);
   return router;
 };
