@@ -11,3 +11,5 @@ mongoose
   });
 
 // Import Models Here.
+
+const boiler = require('../models/boiler');
