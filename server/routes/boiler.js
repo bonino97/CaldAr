@@ -6,7 +6,7 @@ module.exports = () => {
   router.post('/', boilerController.addNewBoiler);
   
   router.get('/all', boilerController.getAllBoilers);
-  router.get('/type/:boilerType', boilerController.getBoilersByType);
+  router.get('/type/:type', boilerController.getBoilersByType);
   router.get('/:boilerId', boilerController.getBoilerById);
 
   router.put('/', boilerController.updateBoiler);

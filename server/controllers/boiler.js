@@ -113,21 +113,20 @@ exports.getBoilerById = async (req, res) => {
 // GET A Boiler By Type (A, B, C, or D)
 exports.getBoilersByType = async (req, res) => {
   try {
-    const boilerType = req.params.boilerType;
-    let boilerJSON = fs.readFileSync('data/boilers.json', 'utf8');
-    let boilers = JSON.parse(boilerJSON);
 
-    let boiler = boilers.filter(
-      (boiler) => boiler.type === boilerType
-    );
+    const { type } = req.params;
 
-    if (boiler.length === 0)
-      return res.status(400).json(`No se encontraron calderas del tipo ${boilerType}`);
+    const boilers = await Boiler.find({ type });
 
-    return res.status(200).json(boiler);
+    if (boilers.length === 0)
+      return res.status(400).json('No existen registros de calderas de ese tipo.');
+
+    return res.status(200).json(boilers);
 
   } catch (error) {
+
     console.error(error);
-    return res.status(500).json('Internal server error.');
+    return res.status(500).json({ message: error.message });
+
   }
 };
