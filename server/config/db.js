@@ -11,3 +11,4 @@ mongoose
   });
 
 // Import Models Here.
+const user = require('../models/user');
