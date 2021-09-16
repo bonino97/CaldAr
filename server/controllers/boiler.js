@@ -1,5 +1,5 @@
 const fs = require('fs');
-const Boiler = require('../models/boiler')
+const Boiler = require('../models/boiler');
 
 // Create A New Boiler
 exports.addNewBoiler = async (req, res) => {
