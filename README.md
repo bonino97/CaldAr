@@ -20,3 +20,6 @@
 1. `addNewUser` -> _Usuarios - Agregar usuario_
 2. `updateUser` -> _Usuarios - Actualizar datos del usuario_
 3. `deleteUser` -> _Usuarios - Borrar usuario por el Id_
+4. `getAllUsers` -> _Usuarios - Obtener todos los usuarios_
+5. `getUserById` -> _Usuarios - Obtener un usuario por el Id_
+6. `getUserByDepartment` -> _Usuarios - Obtener usuarios por Departamento_
