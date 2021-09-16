@@ -73,12 +73,17 @@ exports.deleteBoiler = async (req, res) => {
 // GET All Boilers
 exports.getAllBoilers = async (req, res) => {
   try {
-    let boilerJSON = fs.readFileSync('data/boilers.json', 'utf8');
-    let boilers = JSON.parse(boilerJSON);
-    if (!boilers) return res.status(400).json('Json inexistente.');
+
+    const boilers = await Boiler.find();
+    if (boilers.length === 0)
+      return res.status(400).json('No hay registros de calderas.');
     return res.status(200).json(boilers);
+
   } catch (error) {
+
     console.error(error);
+    return res.status(500).json({ message: error.message });
+
   }
 };
 
