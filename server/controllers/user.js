@@ -52,54 +52,48 @@ exports.deleteUser = async (req, res) => {
   }
 };
 
-//
+// Listar todos los Usuarios
 exports.getAllUsers = async (req, res) => {
   try {
-    let usersJSON = fs.readFileSync('data/users.json', 'utf8');
-    let users = JSON.parse(usersJSON);
-    if (!users) return res.status(400).json('Archivo Json inexistente.');
+    const users = await User.find();
+
+    if (users.length === 0)
+      return res.status(400).json('No se han encontrado usuarios.');
+
     return res.status(200).json(users);
   } catch (error) {
     console.error(error);
-    return res.status(500).json('Error Interno del Servidor.');
+    return res.status(500).json({ message: error.message });
   }
 };
 
+// Obtener Usuario por Id.
 exports.getUserById = async (req, res) => {
   try {
-    const userId = req.params.userId;
-    console.log('Valor', userId);
-    let userJSON = fs.readFileSync('data/users.json', 'utf8');
-    let users = JSON.parse(userJSON);
+    const { userId } = req.params;
+    const user = await User.findById(userId);
 
-    let user = users.filter((user) => Number(user.id) === Number(userId));
-
-    if (user.length === 0)
-      return res.status(400).json('No se encontro el ID de usuario.');
+    if (!user) return res.status(400).json('No existe usuario con ese Id.');
 
     return res.status(200).json(user);
   } catch (error) {
     console.error(error);
-    return res.status(500).json('Error Interno del Servidor.');
+    return res.status(500).json({ message: error.message });
   }
 };
 
+// Obtener Usuarios por departamento.
 exports.getUserByDepartment = async (req, res) => {
   try {
-    const department = req.params.department;
-    console.log('Valor', department);
-    let userJSON = fs.readFileSync('data/users.json', 'utf8');
-    let users = JSON.parse(userJSON);
+    const { department } = req.params;
+    const users = await User.find({ department });
 
-    let usersDepartment = users.filter(
-      (user) => String(user.department) === String(department)
-    );
+    if (users.length === 0)
+      return res.status(400).json('No existen usuarios es ese Departamento.');
 
-    if (usersDepartment.length === 0)
-      return res.status(400).json('No se encontro el Departamento.');
-
-    return res.status(200).json(usersDepartment);
+    return res.status(200).json(users);
   } catch (error) {
     console.error(error);
+    return res.status(500).json({ message: error.message });
   }
 };
