@@ -41,8 +41,10 @@ exports.updateBoiler = async (req, res) => {
     return res.status(200).json(boiler);
 
   } catch (error) {
+
     console.error(error);
     return res.status(500).json({ message: error.message });
+
   }
 };
 
@@ -50,35 +52,20 @@ exports.updateBoiler = async (req, res) => {
 // DELETE A Boiler By ID
 exports.deleteBoiler = async (req, res) => {
   try {
-    const boilerId = req.params.boilerId;
+    
+    const { boilerId } = req.params;
 
-    let boilerJSON = fs.readFileSync('data/boilers.json', 'utf8');
+    const boiler = await Boiler.findByIdAndDelete(boilerId);
 
-    let boilers = JSON.parse(boilerJSON);
-    if (!boilers) return res.status(400).json('Json Inexistente.');
+    if (!boiler) return res.status(400).json('Error eliminando el registro de caldera.');
 
-    let boilerIndex = boilers.findIndex(
-      (boiler) => Number(boiler.id) === Number(boilerId)
-    );
-
-    if (boilerIndex === -1) {
-      return res
-        .status(400)
-        .send({ error: `No existe el edificio con id: ${boilerId} .` });
-    }
-
-    boilers.splice(boilerIndex, 1);
-
-    fs.writeFileSync('data/boilers.json', JSON.stringify(boilers), {
-      encoding: 'utf8',
-      flag: 'w',
-    });
-
-    return res.status(200).json(boilers);
+    return res.status(200).json('Registro de caldera eliminado correctamente.');
 
   } catch (error) {
+
     console.error(error);
-    return res.status(500).json('Internal server error.');
+    return res.status(500).json({ message: error.message });
+
   }
 };
 
