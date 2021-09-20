@@ -4,7 +4,7 @@ const buildingController = require('../controllers/building');
 
 module.exports = () => {
   router.get('/all', buildingController.getAllBuildings);
-  router.get('/category/:category', buildingController.getBuildingByCategory);
+  router.get('/category/:category', buildingController.getBuildingsByCategory);
   router.get('/:buildingId', buildingController.getBuildingById);
 
   router.post('/', buildingController.addNewBuilding);
