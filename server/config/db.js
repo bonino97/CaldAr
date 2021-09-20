@@ -12,5 +12,6 @@ mongoose
 
 // Import Models Here.
 
+const boiler = require('../models/boiler');
 const building = require('../models/building');
 const user = require('../models/user');
