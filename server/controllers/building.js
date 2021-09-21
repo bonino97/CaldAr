@@ -1,163 +1,96 @@
-const fs = require('fs');
-
-exports.getAllBuildings = async (req, res) => {
-  try {
-    let buildingJSON = fs.readFileSync('data/buildings.json', 'utf8');
-    let buildings = JSON.parse(buildingJSON);
-    if (!buildings) return res.status(400).json('Json inexistente.');
-    return res.status(200).json(buildings);
-  } catch (error) {
-    console.error(error);
-    return res.status(500).json('Internal server error.');
-  }
-};
-
-exports.getBuildingById = async (req, res) => {
-  try {
-    const buildingId = req.params.buildingId;
-    let buildingJSON = fs.readFileSync('data/buildings.json', 'utf8');
-    let buildings = JSON.parse(buildingJSON);
-
-    let building = buildings.filter(
-      (building) => Number(building.id) === Number(buildingId)
-    );
-
-    if (building.length === 0)
-      return res.status(400).json('No se encontro un edificio con ese Id.');
-
-    return res.status(200).json(building);
-  } catch (error) {
-    console.error(error);
-    return res.status(500).json('Internal server error.');
-  }
-};
-
-exports.getBuildingByCategory = async (req, res) => {
-  try {
-    const category = req.params.category === 'true' ? true : false;
-    let buildingJSON = fs.readFileSync('data/buildings.json', 'utf8');
-    let buildings = JSON.parse(buildingJSON);
-    let buildingsCategory = buildings.filter(
-      (building) => Boolean(building.category) === Boolean(category)
-    );
-    if (buildingsCategory.length === 0)
-      return res.status(400).json('No se encontro un edificio con ese Id.');
-
-    return res.status(200).json(buildingsCategory);
-  } catch (error) {
-    console.error(error);
-    return res.status(500).json('Internal server error.');
-  }
-};
-
-exports.deleteBuilding = async (req, res) => {
-  try {
-    const buildingId = req.params.buildingId;
-
-    let buildingJSON = fs.readFileSync('data/buildings.json', 'utf8');
-
-    let buildings = JSON.parse(buildingJSON);
-    if (!buildings) return res.status(400).json('Json Inexistente.');
-
-    let buildingIndex = buildings.findIndex(
-      (building) => Number(building.id) === Number(buildingId)
-    );
-
-    if (buildingIndex === -1) {
-      return res
-        .status(400)
-        .send({ error: `No existe el edificio con id: ${buildingId} .` });
-    }
-
-    buildings.splice(buildingIndex, 1);
-
-    fs.writeFileSync('data/buildings.json', JSON.stringify(buildings), {
-      encoding: 'utf8',
-      flag: 'w',
-    });
-
-    return res.status(200).json(buildings);
-  } catch (error) {
-    console.error(error);
-    return res.status(500).json('Internal server error.');
-  }
-};
+const Building = require('../models/building');
 
 exports.addNewBuilding = async (req, res) => {
   try {
-    const { address, category } = req.body;
+    const body = req.body;
+    const building = new Building(body);
 
-    let buildingJSON = fs.readFileSync('data/buildings.json', 'utf8');
-    let buildings = JSON.parse(buildingJSON);
-    if (!buildings) return res.status(400).json('Json Inexistente.');
+    if (!building) return res.status(400).json('Error creando el edificio.');
 
-    if (!address) {
-      return res.status(400).send({ error: 'No existe la direccion.' });
-    }
-
-    if (!category) {
-      return res.status(400).send({ error: 'No existe la categoria.' });
-    }
-
-    const buildingId = Number(buildings[buildings.length - 1].id) + 1;
-    const newBuilding = { id: buildingId, address, category };
-    buildings.push(newBuilding);
-
-    fs.writeFileSync('data/buildings.json', JSON.stringify(buildings), {
-      encoding: 'utf8',
-      flag: 'w',
-    });
-
-    return res.status(200).json(buildings);
+    await building.save();
+    return res.status(200).json(building);
   } catch (error) {
     console.error(error);
-    return res.status(500).json('Internal server error.');
+    return res.status(500).json({ message: error.message });
   }
 };
 
 exports.updateBuilding = async (req, res) => {
   try {
-    const { buildingId, address, category } = req.body;
+    const body = req.body;
 
-    let buildingJSON = fs.readFileSync('data/buildings.json', 'utf8');
+    if (!body.buildingId)
+      return res.status(400).json('No existe el Id del Edificio.');
 
-    let buildings = JSON.parse(buildingJSON);
-    if (!buildings) return res.status(400).json('Json Inexistente.');
-
-    let buildingIndex = buildings.findIndex(
-      (building) => Number(building.id) === Number(buildingId)
-    );
-
-    if (buildingIndex === -1) {
-      return res
-        .status(400)
-        .send({ error: `No existe el edificio con id: ${buildingId} .` });
-    }
-
-    if (!address) {
-      return res.status(400).send({ error: 'No existe la direccion.' });
-    }
-
-    if (!category) {
-      return res.status(400).send({ error: 'No existe la categoria.' });
-    }
-
-    const updatedBuilding = {
-      id: Number(buildingId),
-      address,
-      category: category === 'true' ? true : false,
-    };
-
-    buildings[buildingIndex] = updatedBuilding;
-
-    fs.writeFileSync('data/buildings.json', JSON.stringify(buildings), {
-      encoding: 'utf8',
-      flag: 'w',
+    const building = await Building.findByIdAndUpdate(body.buildingId, body, {
+      new: true,
     });
+
+    if (!building)
+      return res.status(400).json('Error actualizando el edificio.');
+
+    return res.status(200).json(building);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: error.message });
+  }
+};
+
+exports.deleteBuilding = async (req, res) => {
+  try {
+    const { buildingId } = req.params;
+
+    const building = await Building.findByIdAndDelete(buildingId);
+
+    if (!building) return res.status(400).json('Error eliminando el edificio.');
+
+    return res.status(200).json('Edificio eliminado correctamente.');
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: error.message });
+  }
+};
+
+exports.getAllBuildings = async (req, res) => {
+  try {
+    const buildings = await Building.find();
+    if (buildings.length === 0)
+      return res.status(400).json('No existen edificios.');
+    return res.status(200).json(buildings);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: error.message });
+  }
+};
+
+exports.getBuildingById = async (req, res) => {
+  try {
+    const { buildingId } = req.params;
+
+    const building = await Building.findById(buildingId);
+
+    if (!building)
+      return res.status(400).json('No existe edificio con ese Id.');
+
+    return res.status(200).json(building);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: error.message });
+  }
+};
+
+exports.getBuildingsByCategory = async (req, res) => {
+  try {
+    const { category } = req.params;
+
+    const buildings = await Building.find({ category });
+
+    if (buildings.length === 0)
+      return res.status(400).json('No existen edificios con esa categoria.');
 
     return res.status(200).json(buildings);
   } catch (error) {
     console.error(error);
-    return res.status(500).json('Internal server error.');
+    return res.status(500).json({ message: error.message });
   }
 };

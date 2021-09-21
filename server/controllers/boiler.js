@@ -1,95 +1,23 @@
 const fs = require('fs');
+const Boiler = require('../models/boiler');
 
 // Create A New Boiler
 exports.addNewBoiler = async (req, res) => {
   try {
-    
-    const { description, type } = req.body; //data from POSTMAN
 
-    let boilerJSON = fs.readFileSync('data/boilers.json', 'utf8'); //data from JSON file
-    let boilers = JSON.parse(boilerJSON);
-    if (!boilers) return res.status(400).json('Json inexistente.');  //error no JSON file
-    
-    if (!description) {
-      return res.status(400).send({ error: 'No ingreso descripcion de la caldera.' });
-    }
+    const body = req.body;
+    const boiler = new Boiler(body);
 
-    if (!type) {
-      return res.status(400).send({ error: 'No especifico el tipo de caldera.' });
-    }
+    if (!boiler) return res.status(400).json('Error creando el registro de caldera.');
 
-    const boilerId = Number(boilers[boilers.length - 1].id) + 1;
-    const newBoiler = { id: boilerId, description, type };
-    boilers.push(newBoiler);
-
-    fs.writeFileSync('data/boilers.json', JSON.stringify(boilers), {
-      encoding: 'utf8',
-      flag: 'w',
-    });
-
-    return res.status(200).json(boilers);
+    await boiler.save();
+    return res.status(200).json(boiler);
 
   } catch (error) {
 
     console.error(error);  //error
+    return res.status(500).json({ message: error.message });
 
-  }
-};
-
-
-// GET All Boilers
-exports.getAllBoilers = async (req, res) => {
-  try {
-    let boilerJSON = fs.readFileSync('data/boilers.json', 'utf8');
-    let boilers = JSON.parse(boilerJSON);
-    if (!boilers) return res.status(400).json('Json inexistente.');
-    return res.status(200).json(boilers);
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-
-// GET A Boiler By ID
-exports.getBoilerById = async (req, res) => {
-  try {
-    const boilerId = req.params.boilerId;
-    let boilerJSON = fs.readFileSync('data/boilers.json', 'utf8');
-    let boilers = JSON.parse(boilerJSON);
-
-    let boiler = boilers.filter(
-      (boiler) => Number(boiler.id) === Number(boilerId)
-    );
-
-    if (boiler.length === 0)
-      return res.status(400).json('No se encontro una caldera con ese Id.');
-
-    return res.status(200).json(boiler);
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-
-// GET A Boiler By Type (A, B, C, or D)
-exports.getBoilerByType = async (req, res) => {
-  try {
-    const boilerType = req.params.boilerType;
-    let boilerJSON = fs.readFileSync('data/boilers.json', 'utf8');
-    let boilers = JSON.parse(boilerJSON);
-
-    let boiler = boilers.filter(
-      (boiler) => boiler.type === boilerType
-    );
-
-    if (boiler.length === 0)
-      return res.status(400).json(`No se encontraron calderas del tipo ${boilerType}`);
-
-    return res.status(200).json(boiler);
-
-  } catch (error) {
-    console.error(error);
-    return res.status(500).json('Internal server error.');
   }
 };
 
@@ -98,49 +26,25 @@ exports.getBoilerByType = async (req, res) => {
 exports.updateBoiler = async (req, res) => {
   try {
     
-    const { id, description, type } = req.body;
-    
-    let boilerJSON = fs.readFileSync('data/boilers.json', 'utf8');
+    const body = req.body;
 
-    let boilers = JSON.parse(boilerJSON);
-    if (!boilers) return res.status(400).json('Json Inexistente.');
-    
-    let boilerIndex = boilers.findIndex(
-      (boiler) => Number(boiler.id) === Number(id)
-    );
-    
-    if (boilerIndex === -1) {
-      return res
-        .status(400)
-        .send({ error: `No existe la caldera con id: ${boilerId} .` });
-    }
-    
-    if (!description) {
-      return res.status(400).send({ error: 'No ingreso descripcion de la caldera.' });
-    }
+    if (!body.boilerId)
+      return res.status(400).json('No existe el Id especificado de la caldera.');
 
-    if (!type) {
-      return res.status(400).send({ error: 'No especifico el tipo de caldera.' });
-    }
-
-    const updatedBoiler = {
-      id: Number(id),
-      description,
-      type,
-    };
-
-    boilers[boilerIndex] = updatedBoiler;
-
-    fs.writeFileSync('data/boilers.json', JSON.stringify(boilers), {
-      encoding: 'utf8',
-      flag: 'w',
+    const boiler = await Boiler.findByIdAndUpdate(body.boilerId, body, {
+      new: true,
     });
 
-    return res.status(200).json(boilers);
+    if (!boiler)
+      return res.status(400).json('Error actualizando datos de la caldera.');
+
+    return res.status(200).json(boiler);
 
   } catch (error) {
+
     console.error(error);
-    return res.status(500).json('Internal server error.');
+    return res.status(500).json({ message: error.message });
+
   }
 };
 
@@ -148,34 +52,81 @@ exports.updateBoiler = async (req, res) => {
 // DELETE A Boiler By ID
 exports.deleteBoiler = async (req, res) => {
   try {
-    const boilerId = req.params.boilerId;
+    
+    const { boilerId } = req.params;
 
-    let boilerJSON = fs.readFileSync('data/boilers.json', 'utf8');
+    const boiler = await Boiler.findByIdAndDelete(boilerId);
 
-    let boilers = JSON.parse(boilerJSON);
-    if (!boilers) return res.status(400).json('Json Inexistente.');
+    if (!boiler) return res.status(400).json('Error eliminando el registro de caldera.');
 
-    let boilerIndex = boilers.findIndex(
-      (boiler) => Number(boiler.id) === Number(boilerId)
-    );
+    return res.status(200).json('Registro de caldera eliminado correctamente.');
 
-    if (boilerIndex === -1) {
-      return res
-        .status(400)
-        .send({ error: `No existe el edificio con id: ${boilerId} .` });
-    }
+  } catch (error) {
 
-    boilers.splice(boilerIndex, 1);
+    console.error(error);
+    return res.status(500).json({ message: error.message });
 
-    fs.writeFileSync('data/boilers.json', JSON.stringify(boilers), {
-      encoding: 'utf8',
-      flag: 'w',
-    });
+  }
+};
+
+
+// GET All Boilers
+exports.getAllBoilers = async (req, res) => {
+  try {
+
+    const boilers = await Boiler.find();
+    if (boilers.length === 0)
+      return res.status(400).json('No hay registros de calderas.');
+    return res.status(200).json(boilers);
+
+  } catch (error) {
+
+    console.error(error);
+    return res.status(500).json({ message: error.message });
+
+  }
+};
+
+
+// GET A Boiler By ID
+exports.getBoilerById = async (req, res) => {
+  try {
+
+    const { boilerId } = req.params;
+
+    const boiler = await Boiler.findById(boilerId);
+
+    if (!boiler)
+      return res.status(400).json('No existe registro de caldera con ese Id.');
+
+    return res.status(200).json(boiler);
+
+  } catch (error) {
+
+    console.error(error);
+    return res.status(500).json({ message: error.message });
+
+  }
+};
+
+
+// GET A Boiler By Type (A, B, C, or D)
+exports.getBoilersByType = async (req, res) => {
+  try {
+
+    const { type } = req.params;
+
+    const boilers = await Boiler.find({ type });
+
+    if (boilers.length === 0)
+      return res.status(400).json('No existen registros de calderas de ese tipo.');
 
     return res.status(200).json(boilers);
 
   } catch (error) {
+
     console.error(error);
-    return res.status(500).json('Internal server error.');
+    return res.status(500).json({ message: error.message });
+
   }
 };
