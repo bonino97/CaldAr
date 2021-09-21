@@ -1,5 +1,5 @@
 const User = require('../models/user');
-
+// Prueba
 // Agregar nuevo Usuario
 exports.addNewUser = async (req, res) => {
   try {
