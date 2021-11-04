@@ -17,12 +17,13 @@ exports.addNewBuilding = async (req, res) => {
 
 exports.updateBuilding = async (req, res) => {
   try {
+    const buildingId = req.params.buildingId;
     const body = req.body;
 
-    if (!body.buildingId)
+    if (!buildingId)
       return res.status(400).json('No existe el Id del Edificio.');
 
-    const building = await Building.findByIdAndUpdate(body.buildingId, body, {
+    const building = await Building.findByIdAndUpdate(buildingId, body, {
       new: true,
     });
 

@@ -9,7 +9,7 @@ module.exports = () => {
 
   router.post('/', buildingController.addNewBuilding);
 
-  router.put('/', buildingController.updateBuilding);
+  router.put('/:buildingId', buildingController.updateBuilding);
 
   router.delete('/:buildingId', buildingController.deleteBuilding);
   return router;
