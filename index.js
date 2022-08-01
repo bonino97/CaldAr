@@ -1,11 +1,11 @@
-const express = require('express');
-const cors = require('cors');
-const bodyParser = require('body-parser');
+const express = require("express");
+const cors = require("cors");
+const bodyParser = require("body-parser");
 
-require('dotenv').config({ path: '.env' });
+require("dotenv").config({ path: ".env" });
 
 /* MONGOOSE */
-require('./config/db');
+require("./config/db");
 
 /* EXPRESS */
 const app = express();
@@ -20,13 +20,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
 /* ROUTES */
-const boilerRoutes = require('./routes/boiler');
-const buildingRoutes = require('./routes/building');
-const userRoutes = require('./routes/user');
+const boilerRoutes = require("./routes/boiler");
+const buildingRoutes = require("./routes/building");
+const userRoutes = require("./routes/user");
 
-app.use('/api/boiler', boilerRoutes());
-app.use('/api/building', buildingRoutes());
-app.use('/api/user', userRoutes());
+app.use("/api/boiler", boilerRoutes());
+app.use("/api/building", buildingRoutes());
+app.use("/api/user", userRoutes());
 
 app.listen(process.env.PORT || 3000, () => {
   console.log(`CaldAr ~ Online - Running on PORT: ${process.env.PORT || 3000}`);
