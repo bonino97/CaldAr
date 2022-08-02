@@ -23,10 +23,12 @@ app.use(cors());
 const boilerRoutes = require("./routes/boiler");
 const buildingRoutes = require("./routes/building");
 const userRoutes = require("./routes/user");
+const authRoutes = require("./routes/auth");
 
 app.use("/api/boiler", boilerRoutes());
 app.use("/api/building", buildingRoutes());
 app.use("/api/user", userRoutes());
+app.use("/api/auth", authRoutes());
 
 app.listen(process.env.PORT || 3000, () => {
   console.log(`CaldAr ~ Online - Running on PORT: ${process.env.PORT || 3000}`);
